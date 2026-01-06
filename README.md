@@ -22,16 +22,6 @@ Este proyecto se rige por la **eficiencia absoluta**:
 - **Behavioral Insights:** Microsoft Clarity (Heatmaps y grabaciones).
 - **Assets:** Imágenes con compresión de pérdida mínima.
 
-## 📂 Estructura del Proyecto
-```text
-english-at-lima/
-├── public/
-│   ├── assets/       # Imágenes optimizadas 
-│   ├── js/           # Lógica Vanilla JS
-│   └── index.html    # Núcleo del Funnel (SEO & UI)
-├── vercel.json       # Seguridad (CSP Headers) y Rutas
-└── README.md         # Documentación
-
 🔐 Seguridad y Optimización
 
 Content Security Policy (CSP): Configurado para prevenir ataques XSS.
