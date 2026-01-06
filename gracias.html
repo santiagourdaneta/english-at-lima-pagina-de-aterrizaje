@@ -3,18 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Gracias! - English At Lima</title>
+    <title>Conectando... | English At Lima</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script async defer src="https://cloud.umami.is/script.js" data-website-id="c2f23634-6969-4038-a768-8c050de90742"></script>
-    
-    <meta http-equiv="refresh" content="3;url=https://wa.me/51917660526?text=Hola%20English%20At%20Lima!%20Deseo%20información.">
 </head>
-<body class="bg-slate-50 flex items-center justify-center min-h-screen text-center p-6">
-    <div class="max-w-md bg-white p-8 rounded-2xl shadow-lg">
-        <h1 class="text-3xl font-bold text-blue-900 mb-4">¡Excelente elección! 🚀</h1>
-        <p class="text-gray-600 mb-6">Estamos conectándote con tu profesor por WhatsApp en un momento...</p>
-        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mx-auto mb-6"></div>
-        <p class="text-sm text-gray-400 italic">Si no redirige automáticamente, <a href="https://wa.me/51917660526" class="text-blue-600 underline">haz clic aquí</a>.</p>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen text-center p-6 font-sans">
+
+    <div class="max-w-md bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
+        <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+
+        <h1 class="text-3xl font-black text-blue-950 mb-4 tracking-tight">¡Todo listo!</h1>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+            Estamos abriendo WhatsApp para que hables directamente con tu profesor.
+        </p>
+
+        <div class="flex justify-center gap-2 mb-8">
+            <div class="w-3 h-3 bg-blue-900 rounded-full animate-bounce"></div>
+            <div class="w-3 h-3 bg-blue-900 rounded-full animate-bounce [animation-delay:-.3s]"></div>
+            <div class="w-3 h-3 bg-blue-900 rounded-full animate-bounce [animation-delay:-.5s]"></div>
+        </div>
+
+        <p class="text-xs text-gray-400">
+            Si la ventana no se abre automáticamente, 
+            <button id="manual-link" class="text-blue-600 font-bold underline">haz clic aquí</button>.
+        </p>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Extraer los parámetros ofuscados de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const rawId = urlParams.get('u'); // Recibe "51917660526"
+            
+            // 2. Si no hay ID (acceso directo sospechoso), redirigir al inicio
+            if (!rawId || rawId.length < 10) {
+                window.location.href = './index.html';
+                return;
+            }
+
+            const message = encodeURIComponent("¡Hola English At Lima! Vi la página web y quiero agendar mi clase demo.");
+            const finalUrl = `https://wa.me/${rawId}?text=${message}`;
+
+            // 3. Registro final en Umami como "Conversión Completada"
+            if (window.umami) umami.track('conversion-finalizada');
+
+            // 4. Redirección automática tras 2 segundos para permitir que Umami registre el dato
+            setTimeout(() => {
+                window.location.href = finalUrl;
+            }, 2000);
+
+            // 5. Fallback manual
+            document.getElementById('manual-link').addEventListener('click', () => {
+                window.location.href = finalUrl;
+            });
+        });
+    </script>
 </body>
 </html>
