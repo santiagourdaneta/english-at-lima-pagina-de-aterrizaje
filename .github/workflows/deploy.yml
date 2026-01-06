@@ -1,4 +1,6 @@
 name: Deploy English At Lima
+permissions:
+  contents: read
 on:
   push:
     branches: [ main ]
