@@ -1,0 +1,20 @@
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Entorno local
+.env
+.env.local
+
+# Temporal / Cache
+.cache/
+.vercel/
