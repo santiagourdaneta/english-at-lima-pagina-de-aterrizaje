@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://english-at-lima-pagina-de-aterrizaj.vercel.app/sitemap.xml
