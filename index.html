@@ -71,19 +71,22 @@
 
     <style>
             /* CSS Crítico: Solo lo necesario para el primer pantallazo */
-            body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system; background-color: #f8fafc; }
+
             .hero-bg { background: linear-gradient(to bottom, #eff6ff, #ffffff); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; }
             .logo-load { height: 96px; margin-bottom: 32px; animation: fadein 1s ease-in; }
             @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 
-            /* Reducción global de escala tipográfica y espaciados */
-    html { font-size: 14px; } 
-    
     /* Ajuste de contenedores para que no se vean gigantes */
     .max-w-7xl { max-auto; max-width: 80rem; } /* Ajuste proporcional */
     
     /* Eliminar uppercase global en elementos de navegación */
     nav a, button { text-transform: none !important; letter-spacing: normal !important; }
+
+    html { font-size: 16px; } /* Escala base profesional */
+body { color: #374151; } /* text-gray-700 global para mejor contraste */
+section { @apply px-6 md:px-12 py-12; } /* Padding lateral fijo para que no choque en el celular */
+h1, h2, h3 { line-height: 1.2; text-transform: none; }
+
         </style>
 </head>
 
@@ -120,20 +123,18 @@
     </button>
 </section>
 
-    <section class="py-12 bg-white">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Reconocidos en TripAdvisor</h2>
-            <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294316-d26805628-Reviews-English_At_Lima-Lima_Lima_Region.html" 
-               target="_blank" rel="noopener" 
-               class="inline-flex items-center gap-4 p-4 border rounded-xl hover:shadow-md transition">
-                <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" alt="TripAdvisor" class="h-8">
-                <div class="text-left">
-                    <div class="flex text-green-500 text-xl">●●●●●</div>
-                    <p class="text-sm text-gray-600 font-medium italic">"Excelente metodología y paciencia..."</p>
-                </div>
-            </a>
+<section class="relative py-20 overflow-hidden" id="metodo">
+    <img src="./assets/lima-bg.webp" alt="Lima" class="absolute inset-0 object-cover w-full h-full opacity-10 -z-10">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">El Método English At Lima</h2>
+            <p class="text-gray-700 leading-relaxed">No enseñamos gramática aburrida. Usamos <strong>Metodología Inmersiva</strong> basada en situaciones reales de trabajo en Lima y el mundo.</p>
         </div>
-    </section>
+        <div class="md:w-1/2">
+            <img src="./assets/clase-demo.webp" alt="Estudiante en Lima" class="rounded-2xl shadow-xl border-4 border-white">
+        </div>
+    </div>
+</section>
 
     <section class="py-20 bg-slate-50">
     <div class="max-w-5xl mx-auto px-6">
@@ -197,18 +198,92 @@
     </div>
 </section>
 
-    <section class="relative py-20 overflow-hidden" id="metodo">
-        <img src="./assets/lima-bg.webp" alt="Lima" class="absolute inset-0 object-cover w-full h-full opacity-10 -z-10">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <h2 class="text-3xl font-bold text-blue-900 mb-4">El Método English At Lima</h2>
-                <p class="text-gray-700 leading-relaxed">No enseñamos gramática aburrida. Usamos <strong>Metodología Inmersiva</strong> basada en situaciones reales de trabajo en Lima y el mundo.</p>
+<section class="bg-yellow-400">
+    <h2 class="text-2xl font-black mb-6">Practica tu pronunciación</h2>
+    <div class="space-y-4">
+        <div class="bg-black p-4 rounded-xl flex justify-between items-center shadow-lg">
+            <div>
+                <p class="text-yellow-400 font-bold text-lg">"I'm looking to improve my professional network."</p>
+                <p class="text-white/60 text-sm italic">Busco mejorar mi red de contactos profesionales.</p>
             </div>
-            <div class="md:w-1/2">
-                <img src="./assets/clase-demo.webp" alt="Estudiante en Lima" class="rounded-2xl shadow-xl border-4 border-white">
-            </div>
+            <button onclick="playSpeech('I\'m looking to improve my professional network.')" class="bg-yellow-400 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="black" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
         </div>
-    </section>
+        <div class="bg-black p-4 rounded-xl flex justify-between items-center shadow-lg">
+            <div>
+                <p class="text-yellow-400 font-bold text-lg">"How to negotiate a salary in a global company?"</p>
+                <p class="text-white/60 text-sm italic">¿Cómo negociar un salario en una empresa global?</p>
+            </div>
+            <button onclick="playSpeech('How to negotiate a salary in a global company?')" class="bg-yellow-400 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="black" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+        </div>
+        <div class="bg-black p-4 rounded-xl flex justify-between items-center shadow-lg">
+            <div>
+                <p class="text-yellow-400 font-bold text-lg">"Stop using filler words during your interviews."</p>
+                <p class="text-white/60 text-sm italic">Deja de usar muletillas durante tus entrevistas.</p>
+            </div>
+            <button onclick="playSpeech('Stop using filler words during your interviews.')" class="bg-yellow-400 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="black" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="quiz" class="bg-white">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl font-black mb-2 text-gray-800 text-center">Test de nivel rápido</h2>
+        <p class="text-center text-gray-600 mb-8">Responde 5 preguntas para saber tu nivel actual.</p>
+        
+        <form id="levelTest" class="space-y-6">
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <p class="font-bold mb-2">1. I ________ a student.</p>
+                <div class="space-x-4 text-sm">
+                    <label><input type="radio" name="q1" value="0"> is</label>
+                    <label><input type="radio" name="q1" value="1"> am</label>
+                    <label><input type="radio" name="q1" value="0"> are</label>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <p class="font-bold mb-2">2. Where ________ you live?</p>
+                <div class="space-x-4 text-sm">
+                    <label><input type="radio" name="q2" value="1"> do</label>
+                    <label><input type="radio" name="q2" value="0"> does</label>
+                    <label><input type="radio" name="q2" value="0"> are</label>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <p class="font-bold mb-2">3. She ________ to the office yesterday.</p>
+                <div class="space-x-4 text-sm">
+                    <label><input type="radio" name="q3" value="0"> go</label>
+                    <label><input type="radio" name="q3" value="1"> went</label>
+                    <label><input type="radio" name="q3" value="0"> gone</label>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <p class="font-bold mb-2">4. If it rains, I ________ stay at home.</p>
+                <div class="space-x-4 text-sm">
+                    <label><input type="radio" name="q4" value="1"> will</label>
+                    <label><input type="radio" name="q4" value="0"> would</label>
+                    <label><input type="radio" name="q4" value="0"> am</label>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <p class="font-bold mb-2">5. I have ________ in Lima for 10 years.</p>
+                <div class="space-x-4 text-sm">
+                    <label><input type="radio" name="q5" value="0"> live</label>
+                    <label><input type="radio" name="q5" value="0"> living</label>
+                    <label><input type="radio" name="q5" value="1"> lived</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="calculateLevel()" class="w-full bg-black text-white py-4 rounded-full font-bold">ver mi resultado</button>
+        </form>
+
+        <div id="resultBox" class="hidden mt-6 p-6 rounded-2xl text-center"></div>
+    </div>
+</section>
 
     <section class="max-w-2xl mx-auto px-6 py-16" id="faq">
     <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Preguntas Frecuentes</h2>
@@ -238,6 +313,35 @@
         </details>
     </div>
 </section>
+
+<section class="bg-gray-50 border-t border-gray-200">
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic text-gray-700 text-sm">
+            "Gracias al coaching pude pasar mi entrevista técnica en inglés para una empresa de USA. ¡Recomendado!"
+            <p class="mt-4 font-bold not-italic text-black">— Carlos R., Ingeniero de Sistemas</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic text-gray-700 text-sm">
+            "Las clases enfocadas en negocios me dieron la confianza para liderar reuniones regionales."
+            <p class="mt-4 font-bold not-italic text-black">— Ana M., Marketing Manager</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Reconocidos en TripAdvisor</h2>
+        <a href="https://www.tripadvisor.com.pe/Attraction_Review-g294316-d26805628-Reviews-English_At_Lima-Lima_Lima_Region.html" 
+           target="_blank" rel="noopener" 
+           class="inline-flex items-center gap-4 p-4 border rounded-xl hover:shadow-md transition">
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" alt="TripAdvisor" class="h-8">
+            <div class="text-left">
+                <div class="flex text-green-500 text-xl">●●●●●</div>
+                <p class="text-sm text-gray-600 font-medium italic">"Excelente metodología y paciencia..."</p>
+            </div>
+        </a>
+    </div>
+</section>
+
 
 <footer class="bg-blue-950 text-white py-12">
     <div class="max-w-6xl mx-auto px-6">
@@ -294,9 +398,7 @@
         document.getElementById('secure-wa-btn').addEventListener('click', openWhatsApp);
         document.getElementById('secure-wa-mobile').addEventListener('click', openWhatsApp);
     });
-</script>
-
-<script>
+ 
     // CAPA C: Verificación de interacción humana
     let humanInteracted = false;
     ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
@@ -316,9 +418,7 @@
         if (window.umami) umami.track('click-conversion');
         window.location.href = redirectUrl;
     }
-</script>
-
-   <script>
+ 
        document.addEventListener('DOMContentLoaded', function() {
            const btn = document.getElementById('whatsapp-btn');
            
@@ -344,6 +444,35 @@
                if (window.umami) umami.track('high-retention');
            }, 30000);
        });
+
+         function playSpeech(text) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        msg.lang = 'en-US';
+        msg.rate = 0.9; // Un poco más lento para que se entienda bien
+        window.speechSynthesis.speak(msg);
+    }
+
+function calculateLevel() {
+    const form = document.getElementById('levelTest');
+    const data = new FormData(form);
+    let score = 0;
+    for (let entry of data.values()) { score += parseInt(entry); }
+
+    const resultBox = document.getElementById('resultBox');
+    resultBox.className = "mt-6 p-6 rounded-2xl text-center block bg-yellow-400 text-black";
+    
+    let level = "";
+    let invite = "¡Sigue mejorando con English At Lima!";
+
+    if (score <= 2) { level = "Nivel: Básico"; }
+    else if (score <= 4) { level = "Nivel: Intermedio"; }
+    else { level = "Nivel: Avanzado / Post-Intermedio"; }
+
+    resultBox.innerHTML = `<h3 class="text-xl font-black">${level}</h3><p class="text-sm mt-2">${invite}</p>
+    <button onclick="handleConversion()" class="mt-4 underline font-bold">Hablar con un coach ahora</button>`;
+}
+
    </script>
 
 </body>
