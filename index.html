@@ -209,10 +209,11 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </section>
 
-<section class="bg-yellow-400 px-6 md:px-16 py-16"> 
+<section class="bg-yellow-400 px-6 md:px-16 py-16 overflow-hidden relative"> 
 
-    <h2 class="text-3xl font-black mb-8 text-black">Practica tu pronunciación</h2>
-    <div class="space-y-6 max-w-3xl">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center relative z-10"> 
+        <div class="space-y-6 max-w-3xl">
+                <h2 class="text-3xl font-black mb-8 text-black">Practica tu pronunciación</h2>
         <div class="bg-black p-6 rounded-2xl flex justify-between items-center shadow-xl border border-black/10">
             <div>
                 <p class="text-yellow-400 font-bold text-xl mb-1">"I'm looking to improve my professional network."</p>
@@ -225,6 +226,7 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
             </button>
         </div>
 
+
         <div class="bg-black p-6 rounded-2xl flex justify-between items-center shadow-xl border border-black/10">
             <div>
                 <p class="text-yellow-400 font-bold text-xl mb-1">"How to negotiate a salary in a global company?"</p>
@@ -236,13 +238,15 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
                 <svg class="w-6 h-6 pause-icon hidden" fill="black" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
         </div>
-    </div>
+        </div>
+
 
 <div class="hidden md:flex justify-center items-center perspective-1000">
             <div id="coach-container" class="coach-hidden">
                 <img src="./assets/coach.png" alt="Coach" class="w-80 h-auto drop-shadow-2xl">
             </div>
         </div>
+</div>
 
 </section>
 
