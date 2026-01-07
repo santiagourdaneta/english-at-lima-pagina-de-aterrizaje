@@ -384,6 +384,31 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
    
    <script>
     document.addEventListener('DOMContentLoaded', function() {
+
+        const btn = document.getElementById('whatsapp-btn');
+           
+           if (btn) {
+               btn.addEventListener('click', function() {
+                   console.log("✅ Tracking: WhatsApp Click - English At Lima");
+
+                   // Tracking Umami
+                   if (window.umami) {
+                       umami.track('contact-whatsapp-lima');
+                   }
+
+                   // Tracking Clarity
+                   if (typeof clarity === "function") {
+                       clarity("event", "whatsapp_conversion");
+                   }
+               });
+           }
+
+           // Log de retención (30 segundos)
+           setTimeout(() => {
+               console.log('⏱️ Usuario interesado: +30 segundos');
+               if (window.umami) umami.track('high-retention');
+           }, 30000);
+
         const waNumber = "51917660526";
         const msg = encodeURIComponent("Hola English At Lima! Vi su página web y me gustaría recibir información.");
         
@@ -419,33 +444,7 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
         window.location.href = redirectUrl;
     }
  
-       document.addEventListener('DOMContentLoaded', function() {
-           const btn = document.getElementById('whatsapp-btn');
-           
-           if (btn) {
-               btn.addEventListener('click', function() {
-                   console.log("✅ Tracking: WhatsApp Click - English At Lima");
-
-                   // Tracking Umami
-                   if (window.umami) {
-                       umami.track('contact-whatsapp-lima');
-                   }
-
-                   // Tracking Clarity
-                   if (typeof clarity === "function") {
-                       clarity("event", "whatsapp_conversion");
-                   }
-               });
-           }
-
-           // Log de retención (30 segundos)
-           setTimeout(() => {
-               console.log('⏱️ Usuario interesado: +30 segundos');
-               if (window.umami) umami.track('high-retention');
-           }, 30000);
-       });
-
-         function playSpeech(text) {
+    function playSpeech(text) {
         const msg = new SpeechSynthesisUtterance();
         msg.text = text;
         msg.lang = 'en-US';
