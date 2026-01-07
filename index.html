@@ -87,6 +87,30 @@ body { color: #374151; } /* text-gray-700 global para mejor contraste */
 section { @apply px-6 md:px-12 py-12; } /* Padding lateral fijo para que no choque en el celular */
 h1, h2, h3 { line-height: 1.2; text-transform: none; }
 
+/* Configuración de Perspectiva */
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+#coach-container {
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto rebote suave */
+    transform-style: preserve-3d;
+}
+
+/* Estado: En las profundidades (lejos y transparente) */
+.coach-hidden {
+    transform: translateZ(-500px) translateY(100px);
+    opacity: 0;
+    filter: blur(10px);
+}
+
+/* Estado: Al frente (en pantalla) */
+.coach-visible {
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+    filter: blur(0);
+}
+
         </style>
 </head>
 
@@ -185,7 +209,9 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </section>
 
-<section class="bg-yellow-400 px-6 md:px-16 py-16"> <h2 class="text-3xl font-black mb-8 text-black">Practica tu pronunciación</h2>
+<section class="bg-yellow-400 px-6 md:px-16 py-16"> 
+
+    <h2 class="text-3xl font-black mb-8 text-black">Practica tu pronunciación</h2>
     <div class="space-y-6 max-w-3xl">
         <div class="bg-black p-6 rounded-2xl flex justify-between items-center shadow-xl border border-black/10">
             <div>
@@ -211,6 +237,13 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
             </button>
         </div>
     </div>
+
+<div class="hidden md:flex justify-center items-center perspective-1000">
+            <div id="coach-container" class="coach-hidden">
+                <img src="./assets/coach.png" alt="Coach" class="w-80 h-auto drop-shadow-2xl">
+            </div>
+        </div>
+
 </section>
 
 <section id="quiz" class="bg-white px-6 md:px-16 py-20 border-t border-gray-100"> 
@@ -439,43 +472,52 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
         window.location.href = redirectUrl;
     }
  
-   let currentUtterance = null;
-   let currentButton = null;
+ let currentUtterance = null;
+ const coach = document.getElementById('coach-container');
 
-   function toggleSpeech(btn, text) {
-       // Si ya está hablando y es el mismo botón, pausamos (cancelamos)
-       if (window.speechSynthesis.speaking && currentButton === btn) {
-           window.speechSynthesis.cancel();
-           resetButtons();
-           return;
-       }
+ function toggleSpeech(btn, text) {
+     // Si ya está hablando, lo cancelamos y ocultamos a la coach
+     if (window.speechSynthesis.speaking) {
+         window.speechSynthesis.cancel();
+         hideCoach();
+         resetButtons();
+         return;
+     }
 
-       // Si está hablando otro botón, lo cancelamos antes de empezar el nuevo
-       window.speechSynthesis.cancel();
-       resetButtons();
+     // Mostrar a la coach (Animación hacia adelante)
+     showCoach();
 
-       currentButton = btn;
-       currentUtterance = new SpeechSynthesisUtterance(text);
-       currentUtterance.lang = 'en-US';
-       currentUtterance.rate = 0.85;
+     currentUtterance = new SpeechSynthesisUtterance(text);
+     currentUtterance.lang = 'en-US';
+     currentUtterance.rate = 0.9;
 
-       // Cambiar a icono de Pausa al empezar
-       btn.querySelector('.play-icon').classList.add('hidden');
-       btn.querySelector('.pause-icon').classList.remove('hidden');
+     // Cambiar iconos
+     btn.querySelector('.play-icon').classList.add('hidden');
+     btn.querySelector('.pause-icon').classList.remove('hidden');
 
-       // Cuando termine de hablar, volver al icono de Play
-       currentUtterance.onend = () => {
-           resetButtons();
-       };
+     // Al terminar el audio: Ocultar coach (Animación hacia atrás)
+     currentUtterance.onend = () => {
+         hideCoach();
+         resetButtons();
+     };
 
-       window.speechSynthesis.speak(currentUtterance);
-   }
+     window.speechSynthesis.speak(currentUtterance);
+ }
 
-   function resetButtons() {
-       document.querySelectorAll('.play-icon').forEach(i => i.classList.remove('hidden'));
-       document.querySelectorAll('.pause-icon').forEach(i => i.classList.add('hidden'));
-       currentButton = null;
-   }
+ function showCoach() {
+     coach.classList.remove('coach-hidden');
+     coach.classList.add('coach-visible');
+ }
+
+ function hideCoach() {
+     coach.classList.remove('coach-visible');
+     coach.classList.add('coach-hidden');
+ }
+
+ function resetButtons() {
+     document.querySelectorAll('.play-icon').forEach(i => i.classList.remove('hidden'));
+     document.querySelectorAll('.pause-icon').forEach(i => i.classList.add('hidden'));
+ }
 
 function calculateLevel() {
     const form = document.getElementById('levelTest');
