@@ -1,0 +1,3 @@
+go 1.24.3
+
+use ..\..\..\..\proyectos\english-at-lima-cms

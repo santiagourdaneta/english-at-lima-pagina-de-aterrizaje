@@ -110,7 +110,72 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     opacity: 1;
     filter: blur(0);
 }
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
 
+  .animate-fade-in {
+    /* Esto asegura que la animación solo ocurra una vez */
+    animation: fadeInRight 1s ease-out forwards;
+  }
+
+  /* Para que no se vea antes de la animación */
+  .reveal { opacity: 0; }
+
+  /* Contenedor del botón */
+.whatsapp-sticky {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* El icono */
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Texto que acompaña al icono */
+.sticky-text {
+    font-size: 16px;
+}
+
+/* Animación de "latido" para llamar la atención */
+.whatsapp-sticky:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+}
+
+/* En móviles muy pequeños ocultamos el texto para dejar solo el icono circular */
+@media (max-width: 480px) {
+    .whatsapp-sticky {
+        padding: 12px;
+        right: 15px;
+        bottom: 15px;
+    }
+    .sticky-text {
+        display: none;
+    }
+    .whatsapp-icon {
+        margin-right: 0;
+        width: 30px;
+        height: 30px;
+    }
+}
         </style>
 
         <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
@@ -149,7 +214,8 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
 
 <section class="min-h-[70vh] flex flex-col justify-center items-center px-6 text-center bg-slate-50 py-12">
     <h1 class="text-2xl md:text-4xl font-black text-blue-900 mb-4 max-w-3xl leading-tight">
-        Clases personalizadas online de Inglés, para que tengas la mejor experiencia durante tu aprendizaje.
+        Clases personalizadas online de Inglés con la mejor experiencia durante tu aprendizaje.
+        <strong>Habla inglés con confianza sin gramática aburrida!</strong>
     </h1>
     <p class="text-base text-gray-600 mb-8 max-w-lg">
         Sin contratos largos, resultados reales.
@@ -159,66 +225,93 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </button>
 </section>
 
-    <section class="py-20 bg-white">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-4">
-                No somos un instituto más 
-            </h2>
-            <p class="text-lg text-gray-600">Comparamos nuestro enfoque frente a la enseñanza tradicional.</p>
-        </div>
+<section class="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24 px-8 overflow-hidden">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+    
+    <div class="w-full md:w-1/2 space-y-8 z-10">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+        ¡HABLA INGLÉS CON <span class="text-yellow-400">CONFIANZA</span>!
+      </h1>
+      
+      <p class="text-xl text-blue-100 max-w-lg">
+        Sin gramática aburrida, solo conversación real desde el primer día. Olvida el miedo a trabarte al hablar y alcanza tu fluidez con 
+        nuestro método élite.
+      </p>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm opacity-80">
-                <h3 class="text-xl font-bold text-gray-500 mb-6 flex items-center gap-2">
-                    <span class="text-red-500">✕</span> Institutos Tradicionales
-                </h3>
-                <ul class="space-y-4">
-                    <li class="flex gap-3 text-gray-600">
-                        <strong>❌ Clases Masivas:</strong> Grupos de 15 a 20 personas donde apenas hablas 2 minutos.
-                    </li>
-                    <li class="flex gap-3 text-gray-600">
-                        <strong>❌ Enfoque en Gramática:</strong> Meses llenando libros sin poder armar una frase real.
-                    </li>
-                    <li class="flex gap-3 text-gray-600">
-                        <strong>❌ Horarios Rígidos:</strong> Si el tráfico te retrasa, pierdes la clase.
-                    </li>
-                    <li class="flex gap-3 text-gray-600">
-                        <strong>❌ Contratos Forzosos:</strong> Pagos por adelantado y procesos de retiro imposibles.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="bg-blue-900 p-8 rounded-2xl shadow-2xl transform md:-translate-y-4 border-t-4 border-blue-400">
-                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <span class="text-green-400">✓</span> English At Lima
-                </h3>
-                <ul class="space-y-4">
-                    <li class="flex gap-3 text-blue-50">
-                        <strong>✅ 100% Personalizado:</strong> El profesor se adapta a tu ritmo y a tus objetivos específicos.
-                    </li>
-                    <li class="flex gap-3 text-blue-50">
-                        <strong>✅ Real-Life English:</strong> Hablamos desde el minuto 1. Inglés para el trabajo, no para el examen.
-                    </li>
-                    <li class="flex gap-3 text-blue-50">
-                        <strong>✅ Flexibilidad Total:</strong> Clases online que se adaptan a tu agenda.
-                    </li>
-                    <li class="flex gap-3 text-blue-50">
-                        <strong>✅ Sin Ataduras:</strong> Pagas por lo que aprendes. Nuestro compromiso es tu progreso, no un contrato.
-                    </li>
-                </ul>
-            </div>
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center space-x-3">
+          <span class="flex h-3 w-3 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+          </span>
+          <p class="text-sm font-bold uppercase tracking-widest text-red-200">
+            Solo 5 plazas disponibles este mes
+          </p>
         </div>
-
-        <div class="mt-16 text-center">
-            <p class="text-xl font-medium text-blue-900 mb-6 italic">
-                "Diseñado para quienes ya intentaron todo y aún no hablan Inglés"
-            </p>
-            <a href="./gracias.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg">
-                Agendar mi Clase Demo Gratis
-            </a>
-        </div>
+      </div>
     </div>
+    
+        <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <div class="relative group">
+        <div class="absolute -inset-4 bg-yellow-400/20 rounded-2xl blur-lg group-hover:bg-yellow-400/30 transition duration-500"></div>
+        <img 
+          src="./assets/aprender-ingles-online.webp" 
+          alt="Estudiante exitosa de English at Lima" 
+          loading="lazy"
+          class="relative w-full max-w-md h-auto rounded-2xl shadow-2xl border-4 border-white/20 transform md:rotate-2 hover:rotate-0 transition-transform duration-500 object-cover"
+        >
+      </div>
+    </div>
+        </div>
+       
+  </section>
+
+ <section id="metodo" class="py-20 px-8 bg-gray-50">
+  <h2 class="text-3xl font-black mb-6 text-gray-900 text-center">Nuestro Metodo</h2>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+    <div class="text-center space-y-4 group">
+      <div class="flex justify-center">
+        <div class="bg-red-100 p-4 rounded-2xl group-hover:bg-red-200 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-800">El Problema</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Pasas años memorizando gramática que no usas. Al intentar hablar, el miedo y la traducción mental te bloquean por completo.
+      </p>
+    </div>
+
+    <div class="text-center space-y-4 group">
+      <div class="flex justify-center">
+        <div class="bg-blue-100 p-4 rounded-2xl group-hover:bg-blue-200 transition-colors border-2 border-blue-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+      </div>
+      <h3 class="text-2xl font-bold text-blue-900">Nuestra Solución</h3>
+      <p class="text-gray-600 leading-relaxed font-medium">
+        Método conversacional activo. Entrenamos tu cerebro para pensar en inglés, logrando fluidez natural.
+      </p>
+    </div>
+
+    <div class="text-center space-y-4 group">
+      <div class="flex justify-center">
+        <div class="bg-yellow-100 p-4 rounded-2xl group-hover:bg-yellow-200 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z" />
+          </svg>
+        </div>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-800">Resultado Élite</h3>
+      <p class="text-gray-600 leading-relaxed">
+        Habla con seguridas. Mejores empleos, viajes sin barreras y la libertad de expresarte tal como eres.
+      </p>
+    </div>
+
+  </div>
 </section>
 
 <section class="bg-yellow-400 px-6 md:px-16 py-16 overflow-hidden relative" id="practica">
@@ -303,7 +396,60 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </section>
 
-    <section class="max-w-2xl mx-auto px-6 py-16" id="faq">
+<section class="bg-gray-50 border-t border-gray-200">
+  <h2 class="text-3xl font-black mb-6 mt-6 text-gray-900 text-center">Algunos Testimonios</h2>
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic text-gray-700 text-sm">
+            "Gracias al coaching pude pasar mi entrevista técnica en Inglés para una empresa de USA. ¡Recomendado!"
+            <p class="mt-4 font-bold not-italic text-black">— Carlos R., Ingeniero de Sistemas</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic text-gray-700 text-sm">
+            "Las clases enfocadas en negocios me dieron la confianza para liderar reuniones regionales."
+            <p class="mt-4 font-bold not-italic text-black">— Ana M., Marketing Manager</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-16 px-8 bg-white overflow-hidden">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    
+    <div class="w-full md:w-1/2 reveal" id="image-container">
+      <img 
+        src="./assets/estudiante-student.webp" 
+        alt="Estudiante progresando con English at Lima" 
+        loading="lazy" 
+        class="w-full h-auto rounded-2xl shadow-2xl transform hover:scale-[1.02] transition-transform duration-300"
+      >
+    </div>
+
+    <div class="w-full md:w-1/2 space-y-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 leading-tight">
+        ¿Por qué el mundo no espera a los que no hablan inglés?
+      </h2>
+      
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Hoy, hablar inglés no es un "plus", es el <strong>mínimo necesario</strong>. El problema no eres tú, 
+        es el método tradicional que te aburre.
+      </p>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-blue-700 flex items-center">
+          <span class="mr-2 text-green-500">✓</span> La diferencia de English at Lima:
+        </h3>
+        <ul class="grid grid-cols-1 gap-3">
+          <li class="flex items-start bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">
+            <span class="font-bold mr-2 text-blue-600">0% Frustración:</span> Olvida las listas infinitas de verbos.
+          </li>
+          <li class="flex items-start bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">
+            <span class="font-bold mr-2 text-blue-600">100% Hablado:</span> Situaciones de la vida real desde el día 1.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-2xl mx-auto px-6 py-16" id="faq">
     <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">Preguntas Frecuentes</h2>
     <div class="space-y-4 text-left">
         <details class="group border-b border-gray-200 pb-4">
@@ -332,28 +478,64 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </section>
 
-<section class="bg-gray-50 border-t border-gray-200">
-    <div class="mt-12 grid md:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic text-gray-700 text-sm">
-            "Gracias al coaching pude pasar mi entrevista técnica en Inglés para una empresa de USA. ¡Recomendado!"
-            <p class="mt-4 font-bold not-italic text-black">— Carlos R., Ingeniero de Sistemas</p>
+<section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-4">
+                No somos un instituto más 
+            </h2>
+            <p class="text-lg text-gray-600">Comparamos nuestro enfoque frente a la enseñanza tradicional.</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 italic text-gray-700 text-sm">
-            "Las clases enfocadas en negocios me dieron la confianza para liderar reuniones regionales."
-            <p class="mt-4 font-bold not-italic text-black">— Ana M., Marketing Manager</p>
-        </div>
-    </div>
-</section>
 
-<section class="relative py-20 overflow-hidden" id="metodo">
-    <img src="./assets/lima-bg.webp" alt="Lima" class="absolute inset-0 object-cover w-full h-full opacity-10 -z-10">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-        <div class="md:w-1/2">
-            <h2 class="text-3xl font-bold text-blue-900 mb-4">El Método English At Lima</h2>
-            <p class="text-gray-700 leading-relaxed">No enseñamos gramática aburrida. Usamos <strong>Metodología Inmersiva</strong> basada en situaciones reales de trabajo en Lima y el mundo.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm opacity-80">
+                <h3 class="text-xl font-bold text-gray-500 mb-6 flex items-center gap-2">
+                    <span class="text-red-500">✕</span> Institutos Tradicionales
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex gap-3 text-gray-600">
+                        <strong>❌ Clases Masivas:</strong> Grupos de 15 a 20 personas donde apenas hablas 2 minutos.
+                    </li>
+                    <li class="flex gap-3 text-gray-600">
+                        <strong>❌ Enfoque en Gramática:</strong> Meses llenando libros sin poder armar una frase real.
+                    </li>
+                    <li class="flex gap-3 text-gray-600">
+                        <strong>❌ Horarios Rígidos:</strong> Si el tráfico te retrasa, pierdes la clase.
+                    </li>
+                    <li class="flex gap-3 text-gray-600">
+                        <strong>❌ Contratos Forzosos:</strong> Pagos por adelantado y procesos de retiro imposibles.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-blue-900 p-8 rounded-2xl shadow-2xl transform md:-translate-y-4 border-t-4 border-blue-400">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <span class="text-green-400">✓</span> English At Lima
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex gap-3 text-blue-50">
+                        <strong>✅ 100% Personalizado:</strong> El profesor se adapta a tu ritmo y a tus objetivos específicos.
+                    </li>
+                    <li class="flex gap-3 text-blue-50">
+                        <strong>✅ Real-Life English:</strong> Hablamos desde el minuto 1. Inglés para el trabajo, no para el examen.
+                    </li>
+                    <li class="flex gap-3 text-blue-50">
+                        <strong>✅ Flexibilidad Total:</strong> Clases online que se adaptan a tu agenda.
+                    </li>
+                    <li class="flex gap-3 text-blue-50">
+                        <strong>✅ Sin Ataduras:</strong> Pagas por lo que aprendes. Nuestro compromiso es tu progreso, no un contrato.
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="md:w-1/2">
-            <img src="./assets/clase-demo.webp" alt="Estudiante en Lima" class="rounded-2xl shadow-xl border-4 border-white">
+
+        <div class="mt-16 text-center">
+            <p class="text-xl font-medium text-blue-900 mb-6 italic">
+                "Diseñado para quienes ya intentaron todo y aún no hablan Inglés"
+            </p>
+            <a href="javascript:void(0);" onclick="handleConversion();" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg">
+                Agendar mi Clase Demo Gratis
+            </a>
         </div>
     </div>
 </section>
@@ -542,7 +724,28 @@ function calculateLevel() {
     <button onclick="handleConversion()" class="mt-4 underline font-bold">Hablar con un coach ahora</button>`;
 }
 
-   </script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fade-in');
+        entry.target.classList.remove('reveal');
+      }
+    });
+  }, { threshold: 0.2 }); // Se activa cuando el 20% de la imagen es visible
+
+  observer.observe(document.querySelector('#image-container'));
+</script>
+
+<a href="javascript:void(0);" onclick="handleConversion();" 
+   class="whatsapp-sticky" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" class="whatsapp-icon">
+        <path fill="currentColor" d="M12.031 6.172c-2.32 0-4.519.905-6.16 2.547-3.33 3.329-3.33 8.742 0 12.071L4.364 25.5l4.864-1.277c1.558.847 3.305 1.292 5.082 1.292 6.13 0 11.113-4.983 11.113-11.113 0-2.943-1.145-5.709-3.227-7.791-2.081-2.081-4.848-3.227-7.791-3.227zM20 18.368c-.281-.14-.633-.316-1.196-.598-.563-.281-.668-.351-.879-.035-.211.316-.809 1.019-.985 1.23-.176.211-.351.246-.633.105-.281-.14-1.189-.439-2.264-1.405-.835-.744-1.401-1.664-1.565-1.945-.164-.281-.017-.433.123-.573.126-.126.281-.316.422-.492.141-.176.187-.294.281-.492.094-.196.047-.369-.023-.51-.07-.14-.633-1.528-.867-2.09-.228-.547-.457-.472-.633-.48-.164-.008-.351-.008-.538-.008-.187 0-.492.07-.75.351-.258.281-.984.962-.984 2.344 0 1.382 1.008 2.716 1.148 2.905.14.189 1.984 3.029 4.807 4.246.671.29 1.196.463 1.604.593.674.214 1.288.184 1.773.111.541-.081 1.664-.68 1.899-1.336.234-.656.234-1.219.164-1.336-.07-.117-.258-.187-.54-.327z"/>
+    </svg>
+    <span class="sticky-text">¿Hablamos?</span>
+</a>
 
 </body>
 </html>
