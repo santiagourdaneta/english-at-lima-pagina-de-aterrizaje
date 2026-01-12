@@ -1,20 +1,35 @@
-# IDEs y Editores
+# --- NODE / FRONTEND ---
+node_modules/
+# Archivo de registro de errores de npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- TAILWIND ---
+.postcss.config.js
+
+# --- GO / BACKEND ---
+# Binarios compilados de Go
+/bin/
+/dist/
+server-main
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# --- ARCHIVOS DE SISTEMA / IDE ---
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 *.swp
-*.swo
 
-# Sistema Operativo
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Entorno local
+# --- VARIABLES SENSIBLES ---
 .env
 .env.local
-
-# Temporal / Cache
-.cache/
-.vercel/
+.env.development.local
+.env.test.local
+.env.production.local

@@ -44,7 +44,7 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+   <link href="/static/css/output.css" rel="stylesheet">
 
     <script async 
         defer 
@@ -606,6 +606,16 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </section>
 
+<a href="javascript:void(0);" onclick="handleConversion();" 
+   class="whatsapp-sticky" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" class="whatsapp-icon">
+        <path fill="currentColor" d="M12.031 6.172c-2.32 0-4.519.905-6.16 2.547-3.33 3.329-3.33 8.742 0 12.071L4.364 25.5l4.864-1.277c1.558.847 3.305 1.292 5.082 1.292 6.13 0 11.113-4.983 11.113-11.113 0-2.943-1.145-5.709-3.227-7.791-2.081-2.081-4.848-3.227-7.791-3.227zM20 18.368c-.281-.14-.633-.316-1.196-.598-.563-.281-.668-.351-.879-.035-.211.316-.809 1.019-.985 1.23-.176.211-.351.246-.633.105-.281-.14-1.189-.439-2.264-1.405-.835-.744-1.401-1.664-1.565-1.945-.164-.281-.017-.433.123-.573.126-.126.281-.316.422-.492.141-.176.187-.294.281-.492.094-.196.047-.369-.023-.51-.07-.14-.633-1.528-.867-2.09-.228-.547-.457-.472-.633-.48-.164-.008-.351-.008-.538-.008-.187 0-.492.07-.75.351-.258.281-.984.962-.984 2.344 0 1.382 1.008 2.716 1.148 2.905.14.189 1.984 3.029 4.807 4.246.671.29 1.196.463 1.604.593.674.214 1.288.184 1.773.111.541-.081 1.664-.68 1.899-1.336.234-.656.234-1.219.164-1.336-.07-.117-.258-.187-.54-.327z"/>
+    </svg>
+    <span class="sticky-text">¿Hablamos?</span>
+</a>
 
 <footer class="bg-blue-950 text-white py-12">
     <div class="max-w-6xl mx-auto px-6">
@@ -647,6 +657,9 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
 </footer>
    
    <script>
+
+   window.onload = function() {
+   
     document.addEventListener('DOMContentLoaded', function() {
 
         const btn = document.getElementById('whatsapp-btn');
@@ -785,18 +798,9 @@ function calculateLevel() {
   }, { threshold: 0.2 }); // Se activa cuando el 20% de la imagen es visible
 
   observer.observe(document.querySelector('#image-container'));
-</script>
 
-<a href="javascript:void(0);" onclick="handleConversion();" 
-   class="whatsapp-sticky" 
-   target="_blank" 
-   rel="noopener noreferrer"
-   aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" class="whatsapp-icon">
-        <path fill="currentColor" d="M12.031 6.172c-2.32 0-4.519.905-6.16 2.547-3.33 3.329-3.33 8.742 0 12.071L4.364 25.5l4.864-1.277c1.558.847 3.305 1.292 5.082 1.292 6.13 0 11.113-4.983 11.113-11.113 0-2.943-1.145-5.709-3.227-7.791-2.081-2.081-4.848-3.227-7.791-3.227zM20 18.368c-.281-.14-.633-.316-1.196-.598-.563-.281-.668-.351-.879-.035-.211.316-.809 1.019-.985 1.23-.176.211-.351.246-.633.105-.281-.14-1.189-.439-2.264-1.405-.835-.744-1.401-1.664-1.565-1.945-.164-.281-.017-.433.123-.573.126-.126.281-.316.422-.492.141-.176.187-.294.281-.492.094-.196.047-.369-.023-.51-.07-.14-.633-1.528-.867-2.09-.228-.547-.457-.472-.633-.48-.164-.008-.351-.008-.538-.008-.187 0-.492.07-.75.351-.258.281-.984.962-.984 2.344 0 1.382 1.008 2.716 1.148 2.905.14.189 1.984 3.029 4.807 4.246.671.29 1.196.463 1.604.593.674.214 1.288.184 1.773.111.541-.081 1.664-.68 1.899-1.336.234-.656.234-1.219.164-1.336-.07-.117-.258-.187-.54-.327z"/>
-    </svg>
-    <span class="sticky-text">¿Hablamos?</span>
-</a>
+  };
+</script>
 
 </body>
 </html>

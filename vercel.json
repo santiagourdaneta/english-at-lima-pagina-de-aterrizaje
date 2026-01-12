@@ -7,8 +7,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' https://cdn.tailwindcss.com https://unpkg.com https://www.clarity.ms https://c.bing.visualstudio.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; img-src 'self' data: https:;"
-        },
+          "value": "script-src 'self' 'unsafe-inline' https://cloud.umami.is https://scripts.clarity.ms https://www.clarity.ms;" },
         {
           "key": "X-Frame-Options",
           "value": "DENY"
