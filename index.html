@@ -176,6 +176,23 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
         height: 30px;
     }
 }
+/* Asegura que la imagen sea visible si el JS falla o está cargando */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.8s ease-out; 
+}
+
+.animate-fade-in { 
+    opacity: 1 !important; 
+    transform: translateY(0) !important; 
+}
+
+/* Asegura el cursor en cualquier elemento interactivo */
+.cursor-pointer, button, a {
+    cursor: pointer !important;
+}
+ 
         </style>
 
         <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
@@ -203,10 +220,7 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
                 <a href="#quiz" class="text-sm font-bold hover:text-yellow-500 transition-colors">
                         Test de nivel
                 </a>
-                
-                <button onclick="handleConversion()" class="bg-blue-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-800 transition">
-                    Clase Demo
-                </button>
+              
             </div>
         </div>
     </div>
@@ -220,9 +234,14 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     <p class="text-base text-gray-600 mb-8 max-w-lg">
         Sin contratos largos, resultados reales.
     </p>
-    <button onclick="handleConversion()" class="bg-[#25D366] hover:bg-[#20ba5a] text-white text-lg font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 flex items-center gap-2">
-        Contactar por WhatsApp
-    </button>
+    <a href="./gracias.html" 
+   onclick="handleConversion(event)" 
+   class="cursor-pointer bg-[#25D366] hover:bg-[#20ba5a] text-white text-lg font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105 flex items-center justify-center gap-2 inline-flex">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    </svg>
+    Contactar por WhatsApp
+</a>
 </section>
 
 <section class="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 md:py-24 px-8 overflow-hidden">
@@ -407,7 +426,7 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
                 </div>
             </div>
 
-            <button type="button" onclick="calculateLevel()" class="w-full bg-black text-white py-4 rounded-full font-bold">Ver mi resultado</button>
+            <button type="button" id="btn-test" onclick="calculateLevel()" class="w-full bg-black text-white py-4 rounded-full font-bold cursor-pointer hover:bg-gray-800 transition-all">Ver mi resultado</button>
         </form>
 
         <div id="resultBox" class="hidden mt-6 p-6 rounded-2xl text-center"></div>
@@ -580,14 +599,6 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
             </div>
         </div>
 
-        <div class="mt-16 text-center">
-            <p class="text-xl font-medium text-blue-900 mb-6 italic">
-                "Diseñado para quienes ya intentaron todo y aún no hablan Inglés"
-            </p>
-            <a href="javascript:void(0);" onclick="handleConversion();" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg">
-                Agendar mi Clase Demo Gratis
-            </a>
-        </div>
     </div>
 </section>
 
@@ -606,10 +617,9 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </section>
 
-<a href="javascript:void(0);" onclick="handleConversion();" 
-   class="whatsapp-sticky" 
-   target="_blank" 
-   rel="noopener noreferrer"
+<a href="./gracias.html" 
+   onclick="handleConversion(event)" 
+   class="whatsapp-sticky cursor-pointer" 
    aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24" class="whatsapp-icon">
         <path fill="currentColor" d="M12.031 6.172c-2.32 0-4.519.905-6.16 2.547-3.33 3.329-3.33 8.742 0 12.071L4.364 25.5l4.864-1.277c1.558.847 3.305 1.292 5.082 1.292 6.13 0 11.113-4.983 11.113-11.113 0-2.943-1.145-5.709-3.227-7.791-2.081-2.081-4.848-3.227-7.791-3.227zM20 18.368c-.281-.14-.633-.316-1.196-.598-.563-.281-.668-.351-.879-.035-.211.316-.809 1.019-.985 1.23-.176.211-.351.246-.633.105-.281-.14-1.189-.439-2.264-1.405-.835-.744-1.401-1.664-1.565-1.945-.164-.281-.017-.433.123-.573.126-.126.281-.316.422-.492.141-.176.187-.294.281-.492.094-.196.047-.369-.023-.51-.07-.14-.633-1.528-.867-2.09-.228-.547-.457-.472-.633-.48-.164-.008-.351-.008-.538-.008-.187 0-.492.07-.75.351-.258.281-.984.962-.984 2.344 0 1.382 1.008 2.716 1.148 2.905.14.189 1.984 3.029 4.807 4.246.671.29 1.196.463 1.604.593.674.214 1.288.184 1.773.111.541-.081 1.664-.68 1.899-1.336.234-.656.234-1.219.164-1.336-.07-.117-.258-.187-.54-.327z"/>
@@ -656,150 +666,90 @@ h1, h2, h3 { line-height: 1.2; text-transform: none; }
     </div>
 </footer>
    
-   <script>
+  <script>
+ document.addEventListener('DOMContentLoaded', function() {
 
-   window.onload = function() {
-   
-    document.addEventListener('DOMContentLoaded', function() {
+ // --- LÓGICA DE CONVERSIÓN PROFESIONAL ---
+ window.handleConversion = function(event) {
+    // Si el evento existe, prevenimos el salto instantáneo para asegurar el tracking
+    if(event) event.preventDefault();
 
-        const btn = document.getElementById('whatsapp-btn');
-           
-           if (btn) {
-               btn.addEventListener('click', function() {
-                   console.log("✅ Tracking: WhatsApp Click - English At Lima");
+    console.log("Evento de conversión capturado");
 
-                   // Tracking Umami
-                   if (window.umami) {
-                       umami.track('contact-whatsapp-lima');
-                   }
+    // Datos para el gracias.html
+    const telefono = "51917660526";
+    const mensaje = encodeURIComponent("Hola English At Lima! Me gustaría recibir información sobre las clases.");
+    
+    // Tracking (opcional si usas Umami)
+    if (window.umami) umami.track('click-whatsapp-principal');
 
-                   // Tracking Clarity
-                   if (typeof clarity === "function") {
-                       clarity("event", "whatsapp_conversion");
-                   }
-               });
-           }
+    // Redirección a tu página de gracias con los parámetros
+    window.location.href = `./gracias.html?tel=${telefono}&msg=${mensaje}`;
+};
+    
+    // 1. MANEJADOR DE CONVERSIÓN (SEO + UX)
+    window.handleConversion = function(event) {
+        if (window.umami) umami.track('click-conversion');
+        console.log("Redirigiendo a éxito...");
+    };
 
-           // Log de retención (30 segundos)
-           setTimeout(() => {
-               console.log('⏱️ Usuario interesado: +30 segundos');
-               if (window.umami) umami.track('high-retention');
-           }, 30000);
+    // 2. VALIDACIÓN DEL TEST (Evita clics vacíos)
+    window.calculateLevel = function() {
+        const form = document.getElementById('levelTest');
+        const totalPreguntas = 5;
+        // Buscamos cuántos radios están marcados
+        const marcados = form.querySelectorAll('input[type="radio"]:checked').length;
 
-        const waNumber = "51917660526";
-        const msg = encodeURIComponent("Hola English At Lima! Vi su página web y me gustaría recibir información.");
-        
-        const openWhatsApp = () => {
-            // Umami Track
-            if (window.umami) umami.track('secure-whatsapp-click');
-            // Redirigir
-            window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
-        };
-
-        // Asignar evento a ambos botones (desktop y mobile)
-        document.getElementById('secure-wa-btn').addEventListener('click', openWhatsApp);
-        document.getElementById('secure-wa-mobile').addEventListener('click', openWhatsApp);
-    });
- 
-    // CAPA C: Verificación de interacción humana
-    let humanInteracted = false;
-    ['mousemove', 'touchstart', 'scroll', 'keydown'].forEach(evt => 
-        window.addEventListener(evt, () => humanInteracted = true, {once: true})
-    );
-
-    function handleConversion() {
-        if (!humanInteracted) {
-            console.warn("Posible bot detectado.");
+        if (marcados < totalPreguntas) {
+            // UX: Mensaje amigable en lugar de un alert simple
+            const resultBox = document.getElementById('resultBox');
+            resultBox.classList.remove('hidden');
+            resultBox.className = "mt-6 p-4 rounded-xl bg-red-50 text-red-700 border border-red-200 text-center font-medium animate-pulse";
+            resultBox.innerHTML = `⚠️ Por favor, responde las ${totalPreguntas} preguntas para ver tu resultado.`;
             return;
         }
-        // CAPA B: Ofuscación (El link no existe hasta que el humano hace click)
-        const p1 = "51917";
-        const p2 = "660526";
-        const redirectUrl = `./gracias.html?u=${p1}${p2}`;
+
+        // Si llegó aquí, respondió todo
+        let score = 0;
+        form.querySelectorAll('input[type="radio"]:checked').forEach(rb => score += parseInt(rb.value));
         
-        if (window.umami) umami.track('click-conversion');
-        window.location.href = redirectUrl;
+        mostrarResultado(score);
+    };
+
+    function mostrarResultado(score) {
+        const resultBox = document.getElementById('resultBox');
+        let level = score <= 2 ? "Básico" : score <= 4 ? "Intermedio" : "Avanzado";
+        
+        resultBox.classList.remove('hidden');
+        resultBox.className = "mt-6 p-6 rounded-2xl text-center block bg-yellow-400 text-black shadow-lg scale-105 transition-all";
+        resultBox.innerHTML = `
+            <h3 class="text-xl font-black">Tu nivel: ${level}</h3>
+            <p class="text-sm mt-2 mb-4">¡Sigue mejorando con nosotros!</p>
+            <a href="./gracias.html" onclick="handleConversion(event)" class="bg-black text-white px-8 py-3 rounded-full font-bold inline-block hover:bg-gray-900 transition-colors">
+                Agendar mi Clase Demo Gratis
+            </a>
+        `;
     }
- 
- let currentUtterance = null;
- const coach = document.getElementById('coach-container');
 
- function toggleSpeech(btn, text) {
-     // Si ya está hablando, lo cancelamos y ocultamos a la coach
-     if (window.speechSynthesis.speaking) {
-         window.speechSynthesis.cancel();
-         hideCoach();
-         resetButtons();
-         return;
-     }
+    // 3. ANIMACIÓN DE IMAGEN
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log("Imagen detectada en pantalla");
+                entry.target.classList.add('animate-fade-in');
+                entry.target.classList.remove('reveal');
+                observer.unobserve(entry.target); // Dejamos de observar para ahorrar recursos
+            }
+        });
+    }, { threshold: 0.1 }); // Se activa con solo el 10% de la imagen visible
 
-     // Mostrar a la coach (Animación hacia adelante)
-     showCoach();
-
-     currentUtterance = new SpeechSynthesisUtterance(text);
-     currentUtterance.lang = 'en-US';
-     currentUtterance.rate = 0.9;
-
-     // Cambiar iconos
-     btn.querySelector('.play-icon').classList.add('hidden');
-     btn.querySelector('.pause-icon').classList.remove('hidden');
-
-     // Al terminar el audio: Ocultar coach (Animación hacia atrás)
-     currentUtterance.onend = () => {
-         hideCoach();
-         resetButtons();
-     };
-
-     window.speechSynthesis.speak(currentUtterance);
- }
-
- function showCoach() {
-     coach.classList.remove('coach-hidden');
-     coach.classList.add('coach-visible');
- }
-
- function hideCoach() {
-     coach.classList.remove('coach-visible');
-     coach.classList.add('coach-hidden');
- }
-
- function resetButtons() {
-     document.querySelectorAll('.play-icon').forEach(i => i.classList.remove('hidden'));
-     document.querySelectorAll('.pause-icon').forEach(i => i.classList.add('hidden'));
- }
-
-function calculateLevel() {
-    const form = document.getElementById('levelTest');
-    const data = new FormData(form);
-    let score = 0;
-    for (let entry of data.values()) { score += parseInt(entry); }
-
-    const resultBox = document.getElementById('resultBox');
-    resultBox.className = "mt-6 p-6 rounded-2xl text-center block bg-yellow-400 text-black";
-    
-    let level = "";
-    let invite = "¡Sigue mejorando con English At Lima!";
-
-    if (score <= 2) { level = "Nivel: Básico"; }
-    else if (score <= 4) { level = "Nivel: Intermedio"; }
-    else { level = "Nivel: Avanzado / Post-Intermedio"; }
-
-    resultBox.innerHTML = `<h3 class="text-xl font-black">${level}</h3><p class="text-sm mt-2">${invite}</p>
-    <button onclick="handleConversion()" class="mt-4 underline font-bold">Hablar con un coach ahora</button>`;
-}
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-fade-in');
-        entry.target.classList.remove('reveal');
-      }
-    });
-  }, { threshold: 0.2 }); // Se activa cuando el 20% de la imagen es visible
-
-  observer.observe(document.querySelector('#image-container'));
-
-  };
+    const imgContainer = document.querySelector('#image-container');
+    if (imgContainer) {
+        observer.observe(imgContainer);
+        // PLAN B: Si en 3 segundos no se ha animado (error de scroll), la forzamos
+        setTimeout(() => imgContainer.classList.add('animate-fade-in'), 3000);
+    }
+});
 </script>
 
 </body>
